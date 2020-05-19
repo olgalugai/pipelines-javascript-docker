@@ -23,6 +23,7 @@ steps:
         includeLatestTag: true
         tags: |
           $(tag)
+        
     - task: PublishBuildArtifacts@1
       inputs:
         pathToPublish: $(Build.ArtifactStagingDirectory)
