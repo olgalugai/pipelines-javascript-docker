@@ -12,7 +12,7 @@ spec:
   minReadySeconds: 5 
   selector:
     matchLabels:
-      app: mhc-front
+      app: front
   template:
     metadata:
       labels:
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: front
-        image: __ACR__/node.js-app:latest
+        image: __ACR__/node.js-app:__BuildID__
         imagePullPolicy: Always
         ports:
         - containerPort: 80
