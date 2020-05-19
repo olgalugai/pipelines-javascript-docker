@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  selector:
+    matchLabels:
+      app: mhc-front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - name: front
+        image: __ACR__/node.js-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: front

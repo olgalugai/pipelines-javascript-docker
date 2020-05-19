@@ -20,6 +20,7 @@ steps:
         repository: $(imageRepository)
         dockerfile: app/Dockerfile
         containerRegistry: $(dockerRegistryServiceConnection)
+        includeLatestTag: true
         tags: |
           $(tag)
     - task: PublishBuildArtifacts@1
@@ -27,3 +28,8 @@ steps:
         pathToPublish: $(Build.ArtifactStagingDirectory)
         ArtifactName: deploy
         publishLocation: Container
+    - task: CopyFiles@2
+      inputs:
+        #sourceFolder: # Optional
+        contents: 'deployment.yaml' 
+        targetFolder: $(Build.ArtifactStagingDirectory)
