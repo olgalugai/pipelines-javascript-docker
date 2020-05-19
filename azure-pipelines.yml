@@ -20,8 +20,10 @@ steps:
         repository: $(imageRepository)
         dockerfile: app/Dockerfile
         containerRegistry: $(dockerRegistryServiceConnection)
+        includeLatestTag: true
         tags: |
           $(tag)
+        
     - task: PublishBuildArtifacts@1
       inputs:
         pathToPublish: $(Build.ArtifactStagingDirectory)
