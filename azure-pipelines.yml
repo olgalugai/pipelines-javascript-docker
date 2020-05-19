@@ -15,14 +15,13 @@ variables:
   BuildID: $(Build.BuildId)
 
 steps:
-  - task: qetza.replacetokens.replacetokens-task.replacetokens@3
-  displayName: 'Replace tokens'
-  inputs:
-    targetFiles: |
+    - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+    displayName: 'Replace tokens'
+    inputs:
+      targetFiles: |
       deployment.yaml
-    tokenPrefix: __
-    tokenSuffix: __
-
+      tokenPrefix: __
+      tokenSuffix: __
 
     - task: Docker@2
       displayName: Build and push an image to container registry
