@@ -11,7 +11,7 @@ pool:
 
 variables:
   imageName: 'pipelines-javascript-docker'
-  ACR: 'olgaacr.azurecr.io'
+  ACR: ${ACR}
   BuildID: $(Build.BuildId)
 
 steps:
