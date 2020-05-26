@@ -11,7 +11,7 @@ pool:
 
 variables:
   imageName: 'pipelines-javascript-docker'
-  ACR: ${ACR}
+  ACR: 'acrdevopsolga.azurecr.io'
   BuildID: $(Build.BuildId)
 
 steps:
